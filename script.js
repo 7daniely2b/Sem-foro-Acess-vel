@@ -11,14 +11,14 @@ function mudarSinal(cor) {
     let mensagem = document.getElementById("mensagem");
 
     if(cor === "vermelho"){
-        mensagem.innerHTML = "✋ Pare! Aguarde.";
+        mensagem.innerHTML = "✋ Pare! Não atravesse agora.";
     }
 
     else if(cor === "amarelo"){
-        mensagem.innerHTML = "⚠ Atenção! Prepare-se.";
+        mensagem.innerHTML = "⚠ Atenção! Aguarde o próximo sinal.";
     }
 
     else{
-        mensagem.innerHTML = "▶ Siga! Caminho livre.";
+        mensagem.innerHTML = "▶ Siga! Pode continuar.";
     }
 }
