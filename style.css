@@ -25,10 +25,7 @@ section {
 .luz {
     width: 80px;
     height: 80px;
-    background-color:red;
-    background-color: rgb(255, 255, 0);
-    background-color: rgb(2, 138, 2);
-
+    background: #555;
     border-radius: 50%;
     margin: 15px auto;
     display: flex;
@@ -36,7 +33,16 @@ section {
     justify-content: center;
     font-size: 35px;
 }
-
+#vermelho.aceso {
+    background: red;
+}
+#amarelo.aceso{
+    background: yellow;
+    color: black;
+}
+#verde.aceso{
+    background: green;
+}
 .aceso {
     border: 5px solid white;
 }
