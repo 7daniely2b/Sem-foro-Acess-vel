@@ -25,7 +25,10 @@ section {
 .luz {
     width: 80px;
     height: 80px;
-    background: #555;
+    background-color:red;
+    background-color: rgb(255, 165, 0);
+    background-color: rgb(2, 138, 2);
+
     border-radius: 50%;
     margin: 15px auto;
     display: flex;
