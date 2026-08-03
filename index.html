@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo Acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🚦 Semáforo Acessível</h1>
+    <p>Tecnologia e inclusão para um trânsito mais seguro.</p>
+</header>
+
+<section>
+    <h2>Sobre o projeto</h2>
+    <p>
+        Este projeto foi criado para ajudar pessoas com daltonismo,
+        utilizando símbolos e mensagens além das cores do semáforo.
+    </p>
+</section>
+
+<div class="semaforo">
+    <div id="vermelho" class="luz">✋</div>
+    <div id="amarelo" class="luz">⚠</div>
+    <div id="verde" class="luz">▶</div>
+</div>
+
+<div class="botoes">
+    <button onclick="mudarSinal('vermelho')">Pare</button>
+    <button onclick="mudarSinal('amarelo')">Atenção</button>
+    <button onclick="mudarSinal('verde')">Siga</button>
+</div>
+
+<h2 id="mensagem">Escolha um sinal</h2>
+
+<script src="script.js"></script>
+
+</body>
+</html>

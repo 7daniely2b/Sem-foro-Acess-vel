@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+}
+
+section {
+    margin: 20px;
+}
+
+.semaforo {
+    background: black;
+    width: 130px;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 20px;
+}
+
+.luz {
+    width: 80px;
+    height: 80px;
+    background: #555;
+    border-radius: 50%;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.aceso {
+    border: 5px solid white;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#mensagem {
+    margin-top: 20px;
+}
