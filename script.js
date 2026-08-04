@@ -30,7 +30,7 @@ if (cor === "verde") {
     let mensagem = document.getElementById("mensagem");
 
     if(cor === "vermelho"){
-        mensagem.innerHTML = "✋ Pare! Não atravesse agora.";
+        mensagem.innerHTML = "❌ Pare! Não atravesse agora.";
     }
 
     else if(cor === "amarelo"){
@@ -38,6 +38,6 @@ if (cor === "verde") {
     }
 
     else{
-        mensagem.innerHTML = "▶ Siga! Pode continuar.";
+        mensagem.innerHTML = "✅ Siga! Pode continuar.";
     }
 }
