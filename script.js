@@ -34,7 +34,7 @@ if (cor === "verde") {
     }
 
     else if(cor === "amarelo"){
-        mensagem.innerHTML = "⚠ Atenção! Aguarde o próximo sinal.";
+        mensagem.innerHTML = "🟡 Atenção! Aguarde o próximo sinal.";
     }
 
     else{
