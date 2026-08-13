@@ -38,6 +38,6 @@ if (cor === "verde") {
     }
 
     else{
-        mensagem.innerHTML = "✅ Siga! Pode continuar.";
+        mensagem.innerHTML = " 🟢Siga! Pode continuar.";
     }
 }
