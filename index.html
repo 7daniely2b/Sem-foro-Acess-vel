@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semáforo Acessível</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protótipo de Acessibilidade</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<section>
-    <h2>Por que acebilidade?</h2>
-
-    <p>
-        Algumas pessoas possuem daltonismo e podem ter dificuldade em diferenciar determinadas cores. Por isso, este semaforo utiliza simbolos e mensagens para facilitar a identitificação.
-    </p>
-</section>
 <body>
+  <div class="container">
+    <h1>Sistema de Acessibilidade</h1>
 
-<header>
-    <h1>🚦 Semáforo Acessível</h1>
-    <p>Tecnologia e inclusão para um trânsito mais seguro.</p>
-</header>
+    <div class="controls">
+      <button id="btn-pir">Simular Movimento (PIR)</button>
+      <label>
+        <input type="checkbox" id="usar-motor" checked> Usar Motor
+      </label>
+    </div>
 
-<section>
-    <h2>Sobre o projeto</h2>
-    <p>
-        Este projeto foi criado para ajudar pessoas com daltonismo,
-        utilizando símbolos e mensagens além das cores do semáforo.
-    </p>
-</section>
+    <div class="hardware-view">
+      <div class="component">
+        <span>LED 1</span>
+        <div id="led1" class="led"></div>
+      </div>
+      <div class="component">
+        <span>LED 2</span>
+        <div id="led2" class="led"></div>
+      </div>
+      <div class="component">
+        <span>Motor DC</span>
+        <div id="motor" class="motor"></div>
+      </div>
+    </div>
 
-<div class="semaforo">
-    <div id="vermelho" class="luz">❌</div>
-    <div id="amarelo" class="luz">🟡</div>
-    <div id="verde" class="luz">🟢</div>
-</div>
+    <div class="terminal">
+      <h3>Monitor Serial</h3>
+      <div id="serial-log">=================================<br>Sistema de Acessibilidade<br>Aguardando movimento...<br>=================================<br></div>
+    </div>
+  </div>
 
-<div class="botoes">
-    <button onclick="mudarSinal('vermelho')">Pare</button>
-    <button onclick="mudarSinal('amarelo')">Atenção</button>
-    <button onclick="mudarSinal('verde')">Siga</button>
-</div>
-
-<h2 id="mensagem">Escolha um sinal</h2>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
 
-<audio id="somPare" src="audio/pare.mp3"></audio>
-<audio id="somAtencao" src="audio/atencao.mp3"></audio>
-<audio id="somSiga" src="audio/siga".mp3></audio>

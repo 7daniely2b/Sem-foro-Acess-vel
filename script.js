@@ -1,43 +1,78 @@
-function mudarSinal(cor) {
-    document.getElementById("somPare").pause();
-document.getElementById("somAtencao").pause();
-document.getElementById("somSiga").pause();
+const btnPir = document.getElementById('btn-pir');
+const chkMotor = document.getElementById('usar-motor');
+const led1 = document.getElementById('led1');
+const led2 = document.getElementById('led2');
+const motor = document.getElementById('motor');
+const serialLog = document.getElementById('serial-log');
 
-document.getElementById("somPare").currentTime = 0;
-document.getElementById("somAtencao").currentTime = 0;
-document.getElementById("somSiga").currentTime = 0;
+let processando = false;
 
-if (cor === "vermelho") {
-    document.getElementById("somPare").play();
+function logSerial(mensagem) {
+  serialLog.innerHTML += mensagem + '<br>';
+  serialLog.scrollTop = serialLog.scrollHeight;
 }
 
-if (cor === "amarelo") {
-    document.getElementById("somAtencao").play();
+// Simulação da função tone() do Arduino
+function tocarBuzzer(frequencia, duracaoMs) {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioCtx.createOscillator();
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(frequencia, audioCtx.currentTime);
+  oscillator.connect(audioCtx.destination);
+  oscillator.start();
+  setTimeout(() => {
+    oscillator.stop();
+    audioCtx.close();
+  }, duracaoMs);
 }
 
-if (cor === "verde") {
-    document.getElementById("somSiga").play();
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function dispararSistema() {
+  if (processando) return;
+  processando = true;
+  btnPir.disabled = true;
+
+  logSerial('<br>>>> PRESENCA/MOVIMENTO DETECTADO! <<<');
+
+  // 1. Sinalização sonora (Buzzer 1000Hz por 300ms)
+  tocarBuzzer(1000, 300);
+
+  // 2. Sinalização visual com PWM alternado
+  for (let brilho = 0; brilho <= 255; brilho += 15) {
+    const opacidade1 = brilho / 255;
+    const opacidade2 = (255 - brilho) / 255;
+
+    led1.style.backgroundColor = `rgba(255, 200, 0, ${opacidade1})`;
+    led2.style.backgroundColor = `rgba(255, 200, 0, ${opacidade2})`;
+
+    await delay(30);
+  }
+
+  // Mantém ambos acesos totalmente
+  led1.style.backgroundColor = 'rgba(255, 200, 0, 1)';
+  led2.style.backgroundColor = 'rgba(255, 200, 0, 1)';
+  await delay(500);
+
+  // 3. Motor Opcional
+  if (chkMotor.checked) {
+    logSerial('Motor acionado.');
+    motor.classList.add('ativo');
+    await delay(2000);
+    motor.classList.remove('ativo');
+    logSerial('Motor desligado.');
+  }
+
+  // 4. Desliga LEDs e finaliza
+  led1.style.backgroundColor = '#333';
+  led2.style.backgroundColor = '#333';
+
+  logSerial('Sistema pronto para nova deteccao.');
+  logSerial('---------------------------------');
+
+  await delay(1000);
+  btnPir.disabled = false;
+  processando = false;
 }
 
-    let luzes = document.querySelectorAll(".luz");
-
-    luzes.forEach(function(luz){
-        luz.classList.remove("aceso");
-    });
-
-    document.getElementById(cor).classList.add("aceso");
-
-    let mensagem = document.getElementById("mensagem");
-
-    if(cor === "vermelho"){
-        mensagem.innerHTML = "❌ Pare! Não atravesse agora.";
-    }
-
-    else if(cor === "amarelo"){
-        mensagem.innerHTML = "🟡 Atenção! Aguarde o próximo sinal.";
-    }
-
-    else{
-        mensagem.innerHTML = " 🟢Siga! Pode continuar.";
-    }
-}
+btnPir.addEventListener('click', dispararSistema);
